@@ -1,0 +1,11 @@
+# Obsidian vault config & plugins (kept local, not version-controlled)
+.obsidian/
+
+# macOS
+.DS_Store
+
+C-Programming-Language/
+
+/Users/henry/Data_structure/Henry-s-c-course-lab-neo/
+
+/output/
