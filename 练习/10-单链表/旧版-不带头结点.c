@@ -239,3 +239,4 @@ void list_remove(Node **head, int seq)
         /* code */
     }
 }
+

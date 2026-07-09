@@ -8,18 +8,21 @@
 # macOS
 .DS_Store
 
-C-Programming-Language/
+# 翁恺课件(22M 二进制文件,不进 git;来源见其中的 来源.md,可随时重新克隆)
+C语言课件-翁恺/
 
 Henry-s-c-course-lab-neo/
-
-/output/
 
 .vscode/
 
 claude.md
 agents.md
 
-/lab10.dSYM
-lab10
+# 编译产物(可随时重新生成,一律不进版本控制)
+app
+*.o
+*.out
+*.dSYM/
+build/
 
 
