@@ -4,21 +4,21 @@
 
 ## 速查表
 
-| 参数 | 缩写来源 | 作用 | 使用场景 |
-|---|---|---|---|
-| `-o` | **o**utput | 指定输出文件名 | 每次都用 |
-| `-c` | **c**ompile only | 只编译不链接，生成 `.o` | 多文件项目 / Makefile |
-| `-g` | debu**g** | 生成调试信息 | 用 gdb/lldb 调试前必加 |
-| `-fsanitize=address` | **f**lag + sanitize | 内存错误检测（ASan） | 调试段错误、内存越界 |
-| `-Wall` | **W**arnings: all | 开启常用警告 | 日常必开 |
-| `-Wextra` | **W**arnings: extra | 额外警告 | 配合 `-Wall` |
-| `-Werror` | **W**arnings as **error**s | 警告当错误，拒绝编译 | 强迫写干净代码 |
-| `-O0`~`-O3` | **O**ptimize | 优化级别 | 调试 `-O0`，发布 `-O2` |
-| `-Os` | Optimize for **s**ize | 优化体积 | 嵌入式等场景 |
-| `-std=c11` | **st**an**d**ard | 指定 C 标准版本 | 408 / 王道代码用 c11 |
-| `-lm` | **l**ink library + **m**ath | 链接数学库 | 用了 `sqrt`、`pow` 等 |
-| `-I` | **I**nclude | 头文件搜索目录 | 第三方库 |
-| `-L` | **L**ibrary path | 库文件搜索目录 | 第三方库 |
+| 参数                   | 缩写来源                        | 作用             | 使用场景              |
+| -------------------- | --------------------------- | -------------- | ----------------- |
+| `-o`                 | **o**utput                  | 指定输出文件名        | 每次都用              |
+| `-c`                 | **c**ompile only            | 只编译不链接，生成 `.o` | 多文件项目 / Makefile  |
+| `-g`                 | debu**g**                   | 生成调试信息         | 用 gdb/lldb 调试前必加  |
+| `-fsanitize=address` | **f**lag + sanitize         | 内存错误检测（ASan）   | 调试段错误、内存越界        |
+| `-Wall`              | **W**arnings: all           | 开启常用警告         | 日常必开              |
+| `-Wextra`            | **W**arnings: extra         | 额外警告           | 配合 `-Wall`        |
+| `-Werror`            | **W**arnings as **error**s  | 警告当错误，拒绝编译     | 强迫写干净代码           |
+| `-O0`~`-O3`          | **O**ptimize                | 优化级别           | 调试 `-O0`，发布 `-O2` |
+| `-Os`                | Optimize for **s**ize       | 优化体积           | 嵌入式等场景            |
+| `-std=c11`           | **st**an**d**ard            | 指定 C 标准版本      | 408 / 王道代码用 c11   |
+| `-lm`                | **l**ink library + **m**ath | 链接数学库          | 用了 `sqrt`、`pow` 等 |
+| `-I`                 | **I**nclude                 | 头文件搜索目录        | 第三方库              |
+| `-L`                 | **L**ibrary path            | 库文件搜索目录        | 第三方库              |
 
 ## 日常固定用法
 

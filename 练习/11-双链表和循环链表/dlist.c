@@ -79,6 +79,12 @@ void remove_node(DNode *p, DNode *head)
 
 void print_list(DNode *head)
 {
+    if (head == NULL)
+    {
+        fprintf(stderr,"此时head是null\n");
+        return;
+        /* code */
+    }
 
     DNode *p = head->next;
     while (p != head)

@@ -23,14 +23,32 @@ int main(void)
 
     print_list(head);
 
-    push_front(head, 10);
-    push_front(head, 11);
-    push_front(head, 12);
+    push_back(head, 10);
+    push_back(head, 11);
+    push_back(head, 12);
+
+    printf("==========当前长度为：%d============\n", length(head));
 
     print_list(head);
     print_reverse(head);
 
+    DNode *rmv = head;
+    for (int i = 0; i < 3; i++)
+    {
+        rmv = rmv->next;
+        /* code */
+    }
 
+    remove_node(rmv, head);
+    print_list(head);
+
+    dlist_clear(head);
+
+    print_list(head);
+
+    dlist_destroy(&head);
+
+    print_list(head);
 
     return 0;
 }
