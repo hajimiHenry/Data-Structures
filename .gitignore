@@ -1,3 +1,10 @@
+# 无扩展名的文件一律视为可执行文件忽略(如 gcc -o 11 生成的 11、test)
+# 原理: 先忽略所有文件, 再放行目录和带 "." 的文件
+# 注意: 这三行必须放在文件最前面, 否则会把下面那些目录忽略规则也放行掉
+*
+!*/
+!*.*
+
 # Obsidian vault config & plugins (kept local, not version-controlled)
 .obsidian/
 
@@ -6,7 +13,7 @@
 .claudian/
 
 # macOS
-.DS_Store   
+.DS_Store
 
 # 翁恺课件(22M 二进制文件,不进 git;来源见其中的 来源.md,可随时重新克隆)
 C语言课件-翁恺/
@@ -19,6 +26,7 @@ claude.md
 agents.md
 
 # 编译产物(可随时重新生成,一律不进版本控制)
+output/
 app
 *.o
 *.out

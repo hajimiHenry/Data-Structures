@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
+//==========================================这个是二叉树的知识==========================
 typedef struct TreeNode
 {
     int data;
@@ -11,7 +11,7 @@ typedef struct TreeNode
     /* data */
 } TreeNode;
 
-void RootFirst(TreeNode *p)
+void PreOrder(TreeNode *p)
 {
     if (p != NULL)
     {
@@ -21,7 +21,7 @@ void RootFirst(TreeNode *p)
     }
 }
 
-void RootMiddle(TreeNode *p)
+void InOrder(TreeNode *p)
 {
     if (p != NULL)
     {
@@ -31,7 +31,7 @@ void RootMiddle(TreeNode *p)
     }
 }
 
-void RootEnd(TreeNode *p)
+void PostOrder(TreeNode *p)
 {
     if (p != NULL)
     {
@@ -167,4 +167,130 @@ void LevelOrder(TreeNode *root)
 int main(void)
 {
     return 0;
+}
+
+// 线索二叉树的遍历
+//
+typedef struct ThreadNode
+{
+    int data;
+    struct ThreadNode *right;
+    struct ThreadNode *left;
+    int ltag, rtag; // 用来记录
+    /* data */
+} ThreadNode;
+
+ThreadNode *pre = NULL;
+
+void Visit(ThreadNode *p)
+{
+    if (p->left == NULL)
+    {
+        p->left = pre;
+        p->ltag = 1;
+    }
+    if (pre != NULL && pre->right == NULL)
+    {
+        pre->right = p;
+        pre->rtag = 1;
+    }
+    pre = p;
+}
+
+void InThread(ThreadNode *p)
+{
+    if (p == NULL)
+        return;
+    InThread(p->left);
+    Visit(p);
+    InThread(p->right);
+}
+
+// =========================树本身的遍历===================================
+
+// 这是核心逻辑
+bool ThereIsNextTree(TreeNode *node)
+{
+}
+
+void TreePreOrder(TreeNode *root)
+{
+    if (root != NULL)
+    {
+        Visit(root);
+        while (ThereIsNextTree(root))
+        {
+            TreePreOrder(NextTree);
+        }
+    }
+}
+
+void TreePostOrder(TreeNode *root)
+{
+    if (root != NULL)
+    {
+        while (ThereIsNextTree(root))
+        {
+            TreePostOrder(NextTree);
+        }
+        Visit(root);
+    }
+}
+
+// 但是实操上往往把树变成孩子兄弟二叉树,然后对着二叉树进行操作
+// 但是如果在前面进行了转换,变成了孩子兄弟二叉树
+// 那么直接变成遍历二叉树
+
+typedef struct CSNode
+{
+    int data;
+    struct CSNode *FirstChild;
+    struct CSNode *NextSibling;
+} CSNode;
+
+void PreOrder(CSNode *p)
+{
+    if (p != NULL)
+    {
+        printf("%d", p->data);
+        PreOrder(p->FirstChild);
+        PreOrder(p->NextSibling);
+    }
+}
+
+// 树的后序遍历的坑
+// 在把树转化成孩子兄弟二叉树之后,利用它对树本身进行后序遍历,实际上应该是对于这个二叉树进行中序遍历
+
+void MidOrder(CSNode *p)
+{
+    if (p != NULL)
+    {
+        MidOrder(p->FirstChild);
+        printf("%d", p->data);
+        MidOrder(p->NextSibling);
+    }
+}
+
+// 层序遍历,同样依赖孩子兄弟法
+// 原理是一样,但是形式上有所改变,为了把一层的内容按照相同的逻辑收进来,这里需要在这个孩子兄弟树当中,找到实质上同层的元素,也就是右边的兄弟
+void LevelOrder(CSNode *root)
+{
+    LNode *head = LqInit();
+    LNode *rear = head;
+
+    Enqueue(&head, &rear, root);
+
+    while (!isEmpty(head, rear))
+    {
+        CSNode *cur = Dequeue(&head, &rear);
+        printf("%d ", cur->data);
+
+        // 在孩子兄弟二叉树当中往右走,实质上等于对于这个进行同层对遍历
+        CSNode *child = cur->FirstChild;
+        while (child != NULL)
+        {
+            Enqueue(&head, &rear, child);
+            child = child->NextSibling;
+        }
+    }
 }
